@@ -1,0 +1,8 @@
+template-file-path: bucket.yaml
+
+parameters:
+  BucketNameParameter: /my-app/bucket-name
+
+tags:
+  - key: Project
+    value: automated-s3
