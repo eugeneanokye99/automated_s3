@@ -25,6 +25,8 @@ Resources:
       VersioningConfiguration:
         Status: Enabled
 
+        
+
 Outputs:
   BucketName:
     Description: Name of the deployed secure S3 bucket.
