@@ -1,18 +1,17 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Deploy one secure S3 bucket, with name sourced from SSM Parameter Store.
+Description: Deploy one secure S3 bucket.
 
 Parameters:
-  BucketNameParameter:
-    Type: AWS::SSM::Parameter::Value<String>
-    Default: /my-app/bucket-name
-    Description: SSM parameter that contains the globally unique S3 bucket name.
+  BucketName:
+    Type: String
+    Description: Globally unique S3 bucket name.
 
 Resources:
   SecureBucket:
     Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
     Properties:
-      BucketName:
-        Ref: BucketNameParameter
+      BucketName: !Ref BucketName
       BucketEncryption:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
@@ -25,10 +24,7 @@ Resources:
       VersioningConfiguration:
         Status: Enabled
 
-        
-
 Outputs:
   BucketName:
     Description: Name of the deployed secure S3 bucket.
-    Value:
-      Ref: SecureBucket
+    Value: !Ref SecureBucket

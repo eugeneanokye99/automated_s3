@@ -1,1 +1,4 @@
 template-file-path: bucket.yaml
+
+parameters:
+  BucketName: my-globally-unique-bucket-name-123
